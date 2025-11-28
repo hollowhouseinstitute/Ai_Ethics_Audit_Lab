@@ -3,9 +3,6 @@ A modular, research-grade framework for auditing AI systems across **fairness**,
 Designed for ethical AI development, transparency, and safe deployment practices.
 
 ---
-# README Badge Snippets
-
-Copy and paste these into your README.md.
 
 ![License](https://img.shields.io/badge/license-Hollow%20House%20Master%20License-brightgreen)
 ![Status](https://img.shields.io/badge/status-active-blue)
