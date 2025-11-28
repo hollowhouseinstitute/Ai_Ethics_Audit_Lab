@@ -1,0 +1,41 @@
+site_name: AI Ethics Audit Lab
+site_description: Complete documentation site for the Hollow House AI Ethics Audit Lab
+site_url: https://hollowhouseinstitute.github.io/Ai_Ethics_Audit_Lab/
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: purple
+      accent: deep purple
+  features:
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - content.code.copy
+
+plugins:
+  - search
+  - awesome-pages
+
+nav:
+  - Home: README.md
+  - Documentation:
+      - Overview: 05_documentation/README.md
+      - Ethics Review: 05_documentation/ethics_review_form.md
+      - Risk Matrix: 05_documentation/risk_matrix_template.md
+      - Templates Folder: 05_documentation/
+  - Audit Framework:
+      - Core Logic: src/
+      - Audit Runner: src/audit_runner.py
+  - Data:
+      - Raw: data/raw/
+      - Processed: data/processed/
+      - Samples: data/samples/
+  - Legal:
+      - License: LICENSE.md
+      - Code of Conduct: CODE_OF_CONDUCT.md
+      - Security Policy: SECURITY.md
+  - Contributing: CONTRIBUTING.md
+  - Changelog: CHANGELOG.md
+  - Roadmap: ROADMAP.md
