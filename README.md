@@ -1,8 +1,3 @@
-# 🔍 AI Ethics Audit Lab  
-A modular, research-grade framework for auditing AI systems across **fairness**, **privacy**, **explainability**, and **regulatory compliance**.  
-Designed for ethical AI development, transparency, and safe deployment practices.
-
----
 # AI Ethics Audit Lab
 
 [![Build Status](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/ci.yml)
