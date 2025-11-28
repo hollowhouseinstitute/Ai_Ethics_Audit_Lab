@@ -1,0 +1,51 @@
+name: PDF Documentation Export
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Pandoc & LaTeX
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y pandoc texlive texlive-latex-extra
+
+    - name: Create docs directory list
+      run: |
+        mkdir -p pdf_docs
+        find . -name "*.md" > pdf_docs/md_files.txt
+        echo "Found markdown files:"
+        cat pdf_docs/md_files.txt
+
+    - name: Convert Markdown to PDF
+      run: |
+        mkdir -p pdf_output
+        while read file; do
+          base=$(basename "$file" .md)
+          pandoc "$file" -o "pdf_output/${base}.pdf" \
+            --from markdown \
+            --pdf-engine=xelatex \
+            --toc \
+            --metadata-title="$base"
+        done < pdf_docs/md_files.txt
+
+    - name: Bundle all PDFs
+      run: |
+        cd pdf_output
+        zip -r ../documentation_bundle.zip .
+
+    - name: Upload PDF Bundle
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentation-pdfs
+        path: documentation_bundle.zip
