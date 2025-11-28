@@ -1,28 +1,39 @@
-# hollowhouse ai ethics audit lab
+# 🧠 AI Ethics Audit Lab  
+A complete, end-to-end framework for auditing AI systems across fairness, privacy, explainability, and regulatory compliance.  
+Designed for research labs, enterprise governance teams, and applied AI ethics workflows.
 
-## Hollow House Institute  
-Founder: **Amy Pierce Bui**  
+---
 
-**Repository:** `hollowhouse-ai-ethics-audit-lab`  
-**Organization:** Hollow House Institute  
-**License:** Hollow House Master License Suite  
+## 🚀 What This Lab Includes
 
-### Overview  
-AI ethics auditing tools, scoring rubrics, and evaluation scripts.
+### ✔ Full Audit Engine
+- **Fairness checks** (distribution imbalance, protected classes)
+- **Privacy & PII detection** (email, phone, sensitive identifiers)
+- **Explainability tests** (feature transparency, missing documentation)
+- **Compliance engine** (consent, ID integrity, safety checks)
 
-### Structure  
-- `src/` — Source code, scripts  
-- `data/` — Datasets (raw, processed, samples)  
-- `docs/` — Documentation, outlines, diagrams  
-- `assets/` — Images, diagrams  
-- `legal/` — License materials  
-- `LICENSE.md` — License summary  
+### ✔ Preprocessing Pipeline
+- Text cleanup  
+- Demographic normalization  
+- Outlier detection  
+- Data integrity validation  
 
-### Getting Started  
-```bash
-git clone https://github.com/hollowhouseinstitute/hollowhouse-ai-ethics-audit-lab.git
-cd hollowhouse-ai-ethics-audit-lab
-```
+### ✔ Documentation Suite
+Located in **05_documentation/**:
+- Audit Manual  
+- Data Handling Guidelines  
+- Model Card Template  
+- Datasheet Template  
+- Compliance Guidance  
+- Ethics Review Form  
+- Risk Matrix Template  
 
-### License  
-Protected under the Hollow House Institute Master License Suite.
+### ✔ Example Audit
+See **06_examples/run_example_audit.py** to produce:
+- Reports  
+- Metrics  
+- Flagged items  
+- Lineage maps  
+
+### ✔ Results Architecture
+Audit outputs appear in **04_results/**:
