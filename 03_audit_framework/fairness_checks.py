@@ -66,4 +66,3 @@ if __name__ == "__main__":
         input_path="data/raw/sample_dataset.json",
         output_path="04_results/metrics/fairness_report.json",
     )
-
