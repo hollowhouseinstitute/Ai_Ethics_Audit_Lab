@@ -36,7 +36,7 @@ jobs:
             --from markdown \
             --pdf-engine=xelatex \
             --toc \
-            --metadata-title="$base"
+            --metadata-title:"${base}"
         done < pdf_docs/md_files.txt
 
     - name: Bundle all PDFs
