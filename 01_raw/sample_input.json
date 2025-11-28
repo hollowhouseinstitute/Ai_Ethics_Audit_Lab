@@ -1,0 +1,8 @@
+{
+  "user_id": 123,
+  "text": "The system recommended something inappropriate.",
+  "demographics": {
+    "gender": "female",
+    "age": 29
+  }
+}

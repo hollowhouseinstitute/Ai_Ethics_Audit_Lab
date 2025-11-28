@@ -1,0 +1,5 @@
+{
+  "fairness_threshold": 0.7,
+  "enable_privacy_checks": true,
+  "require_consent": true
+}

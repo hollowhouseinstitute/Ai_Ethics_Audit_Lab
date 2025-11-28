@@ -1,0 +1,168 @@
+[
+  {
+    "user_id": 101,
+    "text": "User experienced a recommendation failure.",
+    "demographics": { "gender": "Female", "age": 28 },
+    "consent": true
+  },
+  {
+    "user_id": 102,
+    "text": "My email is jane_doe@example.com and I had issues with your classifier.",
+    "demographics": { "gender": "Male", "age": 34 },
+    "consent": false
+  },
+  {
+    "user_id": 103,
+    "text": "Phone number leaked: 555-123-4567",
+    "demographics": { "gender": "Female", "age": 200 },
+    "consent": false
+  }
+]
+EO
+
+cat > 06_examples/run_example_audit.py << 'EOF'
+import json
+import os
+
+from pathlib import Path
+
+from fairness_checks import run_fairness_audit
+from privacy_checks import run_privacy_audit
+from explainability_tests import test_feature_transparency
+from compliance_engine import run_compliance_audit
+
+RAW = "06_examples/sample_raw_data.json"
+CLEAN = "06_examples/cleaned.json"
+NORM = "06_examples/normalized.json"
+
+OUT_REPORT = "04_results/reports/example_audit_report.json"
+OUT_FLAGS = "04_results/flagged_items/example_flags.json"
+OUT_METRICS = "04_results/metrics/example_metrics.json"
+
+def clean_dataset(records):
+    from re import sub
+
+    cleaned = []
+    for r in records:
+        r["text"] = sub(r"\s+", " ", r["text"].strip())
+        cleaned.append(r)
+    return cleaned
+
+def normalize_records(records):
+    for r in records:
+        demo = r.get("demographics", {})
+        if "gender" in demo:
+            demo["gender"] = demo["gender"].lower()
+        if "age" in demo:
+            try:
+                demo["age"] = int(demo["age"])
+            except:
+                pass
+        r["demographics"] = demo
+    return records
+
+def save_json(path, data):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
+
+def run_full_example_audit():
+    Path("04_results/reports").mkdir(exist_ok=True)
+    Path("04_results/metrics").mkdir(exist_ok=True)
+    Path("04_results/flagged_items").mkdir(exist_ok=True)
+
+    # Load raw
+    with open(RAW, "r") as f:
+        raw = json.load(f)
+
+    # Clean + normalize
+    cleaned = clean_dataset(raw)
+    save_json(CLEAN, cleaned)
+
+    normalized = normalize_records(cleaned)
+    save_json(NORM, normalized)
+
+    # Run full audit
+    fairness = run_fairness_audit(NORM)
+    privacy = run_privacy_audit(NORM)
+    compliance = run_compliance_audit(NORM)
+    explainability = test_feature_transparency({
+        "input_features": ["text", "age", "gender"],
+        "target": "sentiment",
+        "preprocessing": "cleanup + normalization"
+    })
+
+    results = {
+        "fairness": fairness,
+        "privacy": privacy,
+        "compliance": compliance,
+        "explainability": explainability
+    }
+
+    # Save results
+    save_json(OUT_REPORT, results)
+
+    flags = {
+        "privacy_flags": privacy.get("pii_detected"),
+        "compliance_flags": compliance.get("compliance_issues")
+    }
+
+
+cat > 06_examples/sample_report.md << 'EOF'
+# Example Audit Report
+
+This document demonstrates how a full audit report appears when generated through the Ai_Ethics_Audit_Lab.
+
+---
+
+## Summary
+
+The example dataset contained:
+- Multiple PII violations (email, phone)
+- Age outlier (age = 200)
+- Missing consent entries
+- Gender imbalance
+
+---
+
+## Findings
+
+### 1. Fairness
+- Gender distribution shows possible imbalance.
+- Additional samples recommended before conclusion.
+
+### 2. Privacy
+- Email and phone number detected.
+- Strict violation of PII-handling policies.
+
+### 3. Compliance
+- Two records missing consent (critical issue).
+- Recommended mitigation: require explicit opt-in.
+
+### 4. Explainability
+- Missing preprocessing documentation in model card.
+
+---
+
+## Recommendation
+
+**System should NOT be deployed** until:
+- PII removal is automated
+- Age validation is included
+
+
+cat > 07_tests/test_fairness.py << 'EOF'
+import json
+from pathlib import Path
+
+from fairness_checks import run_fairness_audit
+
+def test_fairness_basic():
+    sample = [
+        {"demographics": {"gender": "female"}},
+        {"demographics": {"gender": "female"}},
+        {"demographics": {"gender": "male"}}
+    ]
+    Path("07_tests/sample.json").write_text(json.dumps(sample))
+
+    result = run_fairness_audit("07_tests/sample.json")
+    assert "fairness_issues" in result
