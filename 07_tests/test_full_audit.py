@@ -3,12 +3,13 @@ from pathlib import Path
 
 from audit_runner import run_full_audit
 
+
 def test_full_audit_pipeline():
     sample = {
         "user_id": 10,
         "text": "This is a test.",
         "demographics": {"gender": "female", "age": 30},
-        "consent": True
+        "consent": True,
     }
 
     Path("07_tests/full.json").write_text(json.dumps(sample))
