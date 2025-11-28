@@ -3,12 +3,14 @@ A modular, research-grade framework for auditing AI systems across **fairness**,
 Designed for ethical AI development, transparency, and safe deployment practices.
 
 ---
+# AI Ethics Audit Lab
 
-![License](https://img.shields.io/badge/license-Hollow%20House%20Master%20License-brightgreen)
-![Status](https://img.shields.io/badge/status-active-blue)
-![Python](https://img.shields.io/badge/python-3.9+-yellow)
-![Ethics](https://img.shields.io/badge/ethics-verified-purple)
+[![Build Status](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/ci.yml)
+[![Security Audit](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/security-audit.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/security-audit.yml)
+[![PDF Docs](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/pdf_export.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/pdf_export.yml)
+[![Dataset Validation](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/dataset-validation.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/dataset-validation.yml)
 
+Professional AI ethics auditing toolkit for transparency, safety, and compliance.
 
 ## 🚀 Features
 
