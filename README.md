@@ -93,7 +93,4 @@ API interface
 Sovereign ethical AI license.
 See LICENSE.md.
 
---
-
-## 📁 Project Structure
 
