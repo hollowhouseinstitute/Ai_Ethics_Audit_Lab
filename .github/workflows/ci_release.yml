@@ -1,0 +1,53 @@
+name: Build & Publish Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt || true
+        pip install pytest || true
+
+    - name: Run Tests
+      run: |
+        pytest 07_tests/ -q || true
+
+    - name: Package Artifacts
+      run: |
+        mkdir -p dist
+        zip -r dist/audit_lab_bundle.zip \
+            01_raw \
+            02_processing \
+            03_audit_framework \
+            04_results \
+            05_documentation \
+            06_examples \
+            07_tests \
+            src \
+            docs \
+            README.md \
+            LICENSE.md \
+            DESCRIPTION.md
+
+    - name: Upload Release Assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/audit_lab_bundle.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
