@@ -1,0 +1,68 @@
+name: AI Ethics Audit Full Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+
+  # ---------------------------------------------------
+  # 1 — LINT & FORMAT
+  # ---------------------------------------------------
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install linters
+      run: |
+        pip install black flake8
+
+    - name: Black Formatting Check
+      run: |
+        black --check .
+
+    - name: PEP8 / Style Check
+      run: |
+        flake8 . --ignore=E501
+
+  # ---------------------------------------------------
+  # 2 — SECURITY & DEPENDENCY AUDIT
+  # ---------------------------------------------------
+  security-audit:
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install pip-audit
+      run: pip install pip-audit
+
+    - name: Run pip-audit
+      run: pip-audit || true
+
+  # ---------------------------------------------------
+  # 3 — DATASET INTEGRITY VALIDATION
+  # ---------------------------------------------------
+  dataset-validation:
+    needs: security-audit
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
