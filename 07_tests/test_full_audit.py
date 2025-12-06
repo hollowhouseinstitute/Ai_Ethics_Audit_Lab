@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from audit_runner import run_full_audit
+from audit_runner import run_full_audit # pyright: ignore[reportMissingImports]
 
 
 def test_full_audit_pipeline():
