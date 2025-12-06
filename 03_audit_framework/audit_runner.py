@@ -1,8 +1,8 @@
 import json
 from fairness_checks import run_fairness_audit
-from privacy_checks import run_privacy_audit
-from explainability_tests import test_feature_transparency
-from compliance_engine import run_compliance_audit
+from privacy_checks import run_privacy_audit # pyright: ignore[reportMissingImports]
+from explainability_tests import test_feature_transparency # pyright: ignore[reportMissingImports]
+from compliance_engine import run_compliance_audit # pyright: ignore[reportMissingImports]
 
 
 def run_full_audit(input_file):
