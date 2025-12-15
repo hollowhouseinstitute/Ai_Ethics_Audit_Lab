@@ -106,3 +106,14 @@ See LICENSE.md.
 
 
 
+
+
+
+![Governed by Hollow House Institute](https://img.shields.io/badge/Governed%20by-Hollow%20House%20Institute-black)
+![Canonical Theory](https://img.shields.io/badge/Canonical-Theory-critical)
+## Canonical Governance
+
+This repository is governed by the **Hollow House Institute Canonical Theory**.
+
+Canonical Theory:
+→ https://github.com/hollowhouseinstitute/hollowhouse-research-papers/blob/main/Research_Papers/1_THEORY/canonical_theory.md
