@@ -5,6 +5,11 @@
 [![PDF Docs](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/pdf_export.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/pdf_export.yml)
 [![Dataset Validation](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/dataset-validation.yml/badge.svg)](https://github.com/hollowhouseinstitute/Ai_Ethics_Audit_Lab/actions/workflows/dataset-validation.yml)
 
+Vector Mapping methodologies may be used as part of Hollow House Institute Ethical and Relational Audits.
+
+Audits provide analytical observations and governance commentary only.
+They do not certify legal compliance, regulatory adherence, or clinical safety.
+
 Professional AI ethics auditing toolkit for transparency, safety, and compliance.
 
 ## 🚀 Features
