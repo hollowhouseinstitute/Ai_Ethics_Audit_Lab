@@ -117,3 +117,13 @@ This repository is governed by the **Hollow House Institute Canonical Theory**.
 
 Canonical Theory:
 → https://github.com/hollowhouseinstitute/hollowhouse-research-papers/blob/main/Research_Papers/1_THEORY/canonical_theory.md
+**Hollow House Institute**  
+Structured Human Intelligence  
+
+Website: https://hollowhouseinstitute.com  
+Datasets: https://hollowhouseinstitute.com/datasets  
+Licensing: https://hollowhouseinstitute.com/licensing  
+
+Contact: data@hollowhouseinstitute.com
+
+
